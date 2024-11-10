@@ -1,0 +1,15 @@
+# This file contains multivariate polynomials 
+# It is formatted and separated by commas: 
+# The first part represents the polynomial to be evaluated, and the following parts specify the values of each variable to evaluate at, and the last part is optional and if included, it will print out the description to the screen.
+# Note, the description should be wrapped around with quotation marks
+
+
+x^4-x^3-x^2-2x+2, x=5, "(1) Golden ratio"
+
+x^5+2x^2-5x+5, x=1, "(2) Cube root of 2"
+
+x^6-32x^4+16x^3-2x^2-5x+5, x=2, "(3) Mignotte poly \nM(x)= x^n - 2(cx-1)^2  \n(c and n>= 3) => Sep(M(x))<2/c^{1+n/2} \nChoose c=n=4:  M(x) = x^4 - 2(4x-1)^2 = x^4 -32x^2  + 16x = 2 \nRef: Schonhage"
+
+x^12+x^11-x^9-x^8-x^7-x^6-x^5+x^3+x^2-10x+10, x=3, "(4) Lehmer's number \nIts smallest root > 1 is Lehmer's number: 1.176280818."
+
+x^5-6x^4+11x^3-6x^2-5x+5, x=4, "(5)"

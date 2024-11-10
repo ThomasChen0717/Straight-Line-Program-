@@ -1,0 +1,61 @@
+# SLP Algorithm
+
+## Prerequisites
+Make sure you have the following installed on your system:
+- julia 
+- make
+- zip (command-line tool)
+
+### julia
+julia can be installed by following the guide on the [Julia website](https://julialang.org/downloads/), or simply by typing the following into the terminal:
+- Unix-Like System: `curl -fsSL https://install.julialang.org | sh`
+- Windows: `winget install julia -s msstore`
+
+This installs [Juliaup installation manager](https://github.com/JuliaLang/juliaup), which will automatically install julia and keep it up to date. To install different versions of julia, use `juliaup --help`
+
+Juliaup does not directly install the command "julia", instead, it provides a executable called "julialauncher" which will run julia programs using the specified julia version in the juliaup installation manager. 
+
+If julia is installed directly on your computer, replace "JULIA = julialauncher" with "JULIA = julia" in the Makefile. 
+
+### make and zip
+Both of these are command line tools and some systems comes with them and some doesn't. You can install them using your package manager:
+- On Unix-Like Systems: `sudo apt-get install make zip` (for Debian-based systems) or `sudo yum install make zip` (for Red Hat-based systems).
+- On macOS: `brew install make zip`
+- On Windows: Make is available via [GnuWin](http://gnuwin32.sourceforge.net/packages/make.htm), and zip is available via [Info-ZIP](http://infozip.sourceforge.net/).
+
+
+## Makefile Targets
+- "make run": Runs "make check_install" and Runs the SLP.jl
+- "make zip": Runs "make clean" and compresses the files in the same directory to create SlP.zip
+- "make clean": Cleans the working directory(removing existing SLP.zip and extracted folder SLP)
+- "make check_install": Runs check_dep.jl and installs any dependencies needed
+
+### Default Target
+The default target runs the SLP program, i.e. running "make" is the same as running "make run"
+
+## Files
+This project contains the following files:
+- check_dep.jl: This is the julia program that checks for any missing dependencies required for running SLP.jl and installs them if needed. 
+- SLP.jl: This is the main program that implements the logic for the SLP algorithm 
+- parser.jl: Helper julia file that includes functions that takes care of the parsing of the polynomial into SLP form. 
+- polyExpander.jl: Helper julia file that includes functions that expand polynomials into expanded form
+- utils.jl: Helper julia file that includes any useful helper functions
+- Makefile: This is the Makefile specifying targets for the make command 
+- README: This file. 
+- input.txt: This is the file that stores the input that SLP.jl takes from. 
+  - Each line is consists of a polynomial, followed by the point at which you would like to evaluate the polynomial at.
+    - For example, if a line is written like this: "3x^2y + 5xy^2 + 4z^3 - 6,x=5,y=2,z=3", then it means the polynomial is 3x^2y + 5xy^2 + 4z^3 - 6 with evaluated at x=5,y=2,z=3. 
+    - Optional argument representing description at the end enclosed with quotation marks. Ex. x^4-x^3-x^2-2x+2, x=5, "(1) Golden ratio" 
+  - Ignores empty lines and lines starting with "#"
+- Feel free to add more input files for your own testing, but remember to change the argument in order to run the program on your desired input file. See [Usage](#Usage)
+
+
+## Usage
+To run the program, use the following commands:
+
+- To run the Julia program with default argument(input.txt)
+  ```sh
+  make run
+- To run the Julia program with additional arguments: 
+  ```sh
+  make run ARGS="Your_file_name1.txt Your_file_name2.txt..."

@@ -1,0 +1,8 @@
+# This file contains multivariate polynomials 
+# It is formatted and separated by commas: 
+# The first part represents the polynomial to be evaluated, and the following parts specify the values of each variable to evaluate at, and the last part is optional and if included, it will print out the description to the screen.
+# Note, the description should be wrapped around with quotation marks
+
+3x^2y + 5xy^2 + 4z^3 - 6,x=5,y=2,z=3 
+x/y^2, x=5, y=2
+
